@@ -129,21 +129,64 @@ class RowAndColumnWidget extends StatelessWidget {
             ],
           ),
         ),
-
         MyImage(),
+        FlightBookingButton()
       ],
     );
   }
 }
 
-class MyImage extends StatelessWidget{
+class MyImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     AssetImage assetImage = AssetImage('images/airplane-take-off.png');
     Image image = Image(image: assetImage);
 
-    return Container(child: image,);
+    return Container(
+      child: image,
+    );
+  }
+}
+
+class FlightBookingButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      width: 200.0,
+      height: 50.0,
+      margin: EdgeInsets.only(top: 20.0),
+      child: RaisedButton(
+          color: Colors.deepOrangeAccent,
+          child: Text(
+            "Book your flight",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+              fontFamily: 'Raleway',
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          elevation: 6.0,
+          onPressed: () {
+            // Write some logic on button press.
+
+            showAlertDialog(context);
+          }),
+    );
   }
 
+  void showAlertDialog(BuildContext context) {
+    var dialogDialog = AlertDialog(
+      title: Text("Book your flight"),
+      content: Text("Have a pleasent flight"),
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext buildContext) {
+          return dialogDialog;
+        });
+  }
 }
